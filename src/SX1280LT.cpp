@@ -12,6 +12,17 @@ SX1280Class::SX1280Class()
 
 bool SX1280Class::begin(int8_t pinNSS, int8_t pinNRESET, int8_t pinRFBUSY, int8_t pinDIO1, int8_t pinDIO2, int8_t pinDIO3)
 {
+  
+  pinInit(pinNSS, pinNRESET, pinRFBUSY, pinDIO1, pinDIO2, pinDIO3);
+
+  //assign the passed pins to the class private variable
+  _NSS = pinNSS;
+  _NRESET = pinNRESET;
+  _RFBUSY = pinRFBUSY;
+  _DIO1 = pinDIO1;
+  _DIO2 = pinDIO2;
+  _DIO3 = pinDIO3;
+
 #ifdef SX1280DEBUG
   Serial.println(F("begin()"));
   Serial.println(F("SX1280Class constructor instantiated successfully"));
@@ -28,17 +39,6 @@ bool SX1280Class::begin(int8_t pinNSS, int8_t pinNRESET, int8_t pinRFBUSY, int8_
   Serial.print(F("DIO3 "));
   Serial.println(_DIO3);
 #endif
-
-  pinInit(pinNSS, pinNRESET, pinRFBUSY, pinDIO1, pinDIO2, pinDIO3);
-
-  //assign the passed pins to the class private variable
-  _NSS = pinNSS;
-  _NRESET = pinNRESET;
-  _RFBUSY = pinRFBUSY;
-  _DIO1 = pinDIO1;
-  _DIO2 = pinDIO2;
-  _DIO3 = pinDIO3;
-
 
   resetDevice();
   if (checkDevice())
