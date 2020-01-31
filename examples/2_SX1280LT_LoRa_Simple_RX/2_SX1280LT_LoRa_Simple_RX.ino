@@ -27,7 +27,7 @@
 ******************************************************************************************************/
 
 #define programversion "V1.0"
-#define Serial_Monitor_Baud 115300
+#define Serial_Monitor_Baud 115200
 
 #include "Arduino.h"
 #include <SPI.h>
